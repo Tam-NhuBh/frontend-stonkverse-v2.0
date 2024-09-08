@@ -1,23 +1,43 @@
 "use client";
 
-import { FC, useState } from "react";
-import { newsItemsData } from "@/data/news-items";
-import NewsCardItem from "@/components/news-card";
-import Advertisement from "./news-advertisement";
+import { FC, useState, useEffect } from "react";
+import { IPost } from "@/types";
+import { getAllPostsData } from "@/lib/fetch-data";
+import PostCard from "../post-card";
+import { Types } from "mongoose";
+import { postData } from "@/data/post-items"; 
 import TradingMap from "./trading-map";
+import Advertisement from "./post-advertisement";
+interface Props {}
 
-interface Props { }
+export interface IFetchedPost extends IPost {
+    _id: Types.ObjectId;
+}
 
-const NewsList: FC<Props> = (): JSX.Element => {
+const Post: FC<Props> = (): JSX.Element => {
+    const [posts] = useState<IPost[]>(postData);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
-    const totalPages = Math.ceil(newsItemsData.length / itemsPerPage);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const fetchedPosts = await getAllPostsData();
+    //             setPosts(fetchedPosts as IFetchedPost[]);
+    //         } catch (error) {
+    //             console.error("Failed to fetch posts", error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
+
+    const totalPages = Math.ceil(posts?.length / itemsPerPage);
 
     const handleClick = (pageNumber: number) => {
         setCurrentPage(pageNumber);
     };
 
-    const currentItems = newsItemsData.slice(
+    const currentItems = posts?.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -45,8 +65,8 @@ const NewsList: FC<Props> = (): JSX.Element => {
                             </h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {currentItems.map((news) => (
-                                <NewsCardItem key={news.title} post={news} />
+                            {currentItems?.map((post) => (
+                                <PostCard key={post?._id?.toString()} post={post} />
                             ))}
                         </div>
                         <div className="flex gap-2 mt-4 justify-center">
@@ -66,7 +86,7 @@ const NewsList: FC<Props> = (): JSX.Element => {
                     </div>
                 </div>
 
-                {/*Advertisement */}
+                {/* Advertisement */}
                 <div className="w-full md:w-1/3 flex flex-col">
                     <Advertisement />
                 </div>
@@ -75,4 +95,4 @@ const NewsList: FC<Props> = (): JSX.Element => {
     );
 };
 
-export default NewsList;
+export default Post;

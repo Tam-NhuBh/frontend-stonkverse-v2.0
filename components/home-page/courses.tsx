@@ -19,7 +19,7 @@ const Courses: FC<Props> = async (props): Promise<JSX.Element> => {
     <section className="even-section">
       <div className="container">
 
-        <div className="search-container mb-9"> {/* SearchBar */}
+        <div className="search-container mb-9">
           <SearchBar />
         </div>
 

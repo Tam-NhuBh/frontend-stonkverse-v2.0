@@ -5,7 +5,7 @@ interface AdvertisementProps {}
 
 const Advertisement: FC<AdvertisementProps> = () => {
     return (
-        <div className="w-full dark:bg-slate-900 rounded-[5px] shadow-md dark:border-none">
+        <div className="w-full dark:bg-slate-900 rounded-[5px] dark:border-none">
             <div className="mb-6">
                 <div className="p-4 bg-gray-200 dark:bg-slate-800">
                     <h2 className="text-lg font-semibold">Most Popular</h2>

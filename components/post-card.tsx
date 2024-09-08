@@ -4,29 +4,17 @@ import { FC } from "react";
 import Link from "next/link";
 import NextImage from "./next-image"; 
 import BtnWithIcon from "./btn-with-icon";
+import { IFetchedPost } from "./home-page/posts";
 
-interface IAuthor {
-    avatar: string;
-    name: string;
-    date: Date;
-}
-
-interface INewsItem {
-    title: string;
-    content: string;
-    url: string;
-    authors: IAuthor[];
-    thumbnail: { url: string };
-}
 
 interface Props {
-    post: INewsItem;
+    post: IFetchedPost;
 }
 
-const NewsCardItem: FC<Props> = ({ post }): JSX.Element => {
+const PostCard: FC<Props> = ({ post }): JSX.Element => {
     return (
-        <div className="rounded-[5px] shadow-md dark:border-none dark:bg-slate-500 bg-white dark:bg-opacity-20 custom-hover cursor-pointer">
-            <Link href={post.url} className="relative block w-full aspect-[16/9] overflow-hidden">
+        <div className="flex flex-col rounded-[5px] shadow-md dark:border-none dark:bg-slate-500 bg-white dark:bg-opacity-20 custom-hover cursor-pointer">
+            <Link href={`/post/${post._id}`} className="relative block w-full aspect-[16/9] overflow-hidden">
                 <NextImage
                     src={post.thumbnail.url}
                     alt={post.title}
@@ -34,14 +22,16 @@ const NewsCardItem: FC<Props> = ({ post }): JSX.Element => {
                 />
             </Link>
 
-            <div className="p-4 dark:text-dark_text text-tertiary">
+            <div className="flex flex-col p-4 dark:text-dark_text text-tertiary flex-grow">
                 <h3 className="font-semibold text-lg text-gradient line-clamp-2 mb-3">
-                    <Link href={post.url}>{post.title}</Link>
+                    <Link href={`/post/${post._id}`}>{post.title}</Link>
                 </h3>
 
-                <p className="text-sm md:text-base line-clamp-3 mb-4">
+                <p className="text-sm md:text-base line-clamp-3 mb-4 flex-grow">
                     {post.content}
                 </p>
+
+                {/* Uncomment if you want to display author information */}
                 {/* 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm mb-4">
                     {post.authors.map((author, index) => (
@@ -58,10 +48,11 @@ const NewsCardItem: FC<Props> = ({ post }): JSX.Element => {
                             </span>
                         </div>
                     ))}
-                </div> */}
+                </div>
+                */}
 
                 <div className="mt-auto">
-                    <Link href={post.url}>
+                    <Link href={`/post/${post._id}`}>
                         <BtnWithIcon
                             content="READ MORE"
                             iconSize={25}
@@ -74,10 +65,4 @@ const NewsCardItem: FC<Props> = ({ post }): JSX.Element => {
     );
 };
 
-export default NewsCardItem;
-
-
-// news page list
-//admin news management
-//layout admin management
-// change api fe
+export default PostCard;
