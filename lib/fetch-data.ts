@@ -13,6 +13,18 @@ export const getAllCoursesData = async () => {
     console.log(error);
   }
 };
+//XEM LẠI (THÊM API VÀO)
+export const getAllPostsData = async () => {
+  try {
+    const { data } = await axios(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/get-posts`
+    );
+
+    return data.courses;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getAllCategories = async () => {
   try {

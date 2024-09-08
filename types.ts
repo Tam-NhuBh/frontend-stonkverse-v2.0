@@ -115,3 +115,21 @@ export interface ICourse {
   ratings?: number;
   purchased?: number;
 }
+
+export interface IAuthorPost {
+  avatar: string;
+  name: string;
+  date: Date;
+}
+
+export interface IPost {
+  _id: any;
+  title: string;
+  content: string;
+  url: string;
+  authors: IAuthorPost[];
+  thumbnail: {
+    public_id: string; 
+    url: string;
+  };
+}
