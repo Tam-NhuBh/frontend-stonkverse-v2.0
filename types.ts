@@ -132,4 +132,10 @@ export interface IPost {
     public_id: string; 
     url: string;
   };
+  views:Number;
+  socialLinks:{
+    facebook: string,
+    twitter: string,
+    instagram: string
+  };
 }
