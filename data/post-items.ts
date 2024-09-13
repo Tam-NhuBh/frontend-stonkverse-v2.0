@@ -19,7 +19,7 @@ export const postData: IPost[] = [
         - Et harum quidem rerum facilis est et expedita distinctio
   
         Mauris malesuada ligula in interdum pharetra. Vivamus purus orci, molestie vel erat sed, consectetur posuere ligula.
-      `,        
+      `,
         url: "/news/market-hits-record-highs",
         authors: [
             {
@@ -28,10 +28,17 @@ export const postData: IPost[] = [
                 date: new Date(2022, 0, 1),
             },
         ],
+
         thumbnail: {
-            public_id: "home-page/category-1", 
+            public_id: "home-page/category-1",
             url: "/assets/images/home-page/category-1.jpg",
         },
+        views: 1.230,
+        socialLinks: {
+            facebook: "#",
+            twitter: "#",
+            instagram: "#"
+        }
     },
     {
         _id: "60d0fe4f5311236168a109cb", // ID tĩnh 2
@@ -60,6 +67,12 @@ export const postData: IPost[] = [
             public_id: "home-page/category-2",
             url: "/assets/images/home-page/category-2.jpg",
         },
+        views: 1.230,
+        socialLinks: {
+            facebook: "#",
+            twitter: "#",
+            instagram: "https://www.instagram.com/dhspkt.hcmute"
+        }
     },
     {
         _id: "60d0fe4f5311236168a109cc", // ID tĩnh 3
@@ -77,6 +90,12 @@ export const postData: IPost[] = [
             public_id: "home-page/category-3",
             url: "/assets/images/home-page/category-3.jpg",
         },
+        views: 1.230,
+        socialLinks: {
+            facebook: "#",
+            twitter: "#",
+            instagram: "#"
+        }
     },
     {
         _id: "60d0fe4f5311236168a109cd", // ID tĩnh 4
@@ -94,6 +113,12 @@ export const postData: IPost[] = [
             public_id: "home-page/category-6",
             url: "/assets/images/home-page/category-6.jpg",
         },
+        views: 1.230,
+        socialLinks: {
+            facebook: "#",
+            twitter: "#",
+            instagram: "#"
+        }
     },
     {
         _id: "60d0fe4f5311236168a109ce", // ID tĩnh 5
@@ -111,5 +136,64 @@ export const postData: IPost[] = [
             public_id: "home-page/category-7",
             url: "/assets/images/home-page/category-7.jpg",
         },
+        views: 1.230,
+        socialLinks: {
+            facebook: "#",
+            twitter: "#",
+            instagram: "#"
+        }
     },
 ];
+
+export const mockComments = [
+    {
+      _id: "1",
+      user: {
+        name: "John Doe",
+        avatar: {
+          url: "https://via.placeholder.com/150",
+        },
+      },
+      comment: "Great post! I really enjoyed reading it.",
+      rating: 5,
+      createdAt: new Date("2023-07-21").toISOString(),
+      replies: [
+        {
+          _id: "1-1",
+          user: {
+            name: "Jane Smith",
+            avatar: {
+              url: "https://via.placeholder.com/150",
+            },
+          },
+          comment: "I agree, it was very insightful!",
+          createdAt: new Date("2023-07-22").toISOString(),
+        },
+        {
+          _id: "1-2",
+          user: {
+            name: "Alice Johnson",
+            avatar: {
+              url: "https://via.placeholder.com/150",
+            },
+          },
+          comment: "Thanks for the feedback!",
+          createdAt: new Date("2023-07-23").toISOString(),
+        },
+      ],
+    },
+    {
+      _id: "2",
+      user: {
+        name: "Mark Lee",
+        avatar: {
+          url: "https://via.placeholder.com/150",
+        },
+      },
+      comment: "Interesting insights. Thanks for sharing!",
+      rating: 4,
+      createdAt: new Date("2023-07-24").toISOString(),
+      replies: [],
+    },
+  ];
+  
